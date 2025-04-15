@@ -6,3 +6,4 @@ Group members:
 * Anthony Covello
 * Lucian Eckert-Dean
 * Katrina Lu
+* Shuaib Tabit
