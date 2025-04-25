@@ -30,7 +30,7 @@ nav {
     font-weight: 500;
   }
 
-  .nav-menu a:hover {
+  .nav-list a:hover {
     color: #ddd;
 }
 .project-name {
@@ -40,23 +40,7 @@ nav {
 }
 
 
-nav li {
-    display: inline-flex;
-    margin: 0 1rem;
-    justify-content:end;
-    
-}
 
-nav ul {
-    position:relative;
-}
 
-nav div.temp-name {
-    position:flex;
-    padding-left:1rem;
-}
 
-nav div.menu {
-    width:fit-content
-} 
 
