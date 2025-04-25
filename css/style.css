@@ -60,3 +60,48 @@ nav div.menu {
     width:fit-content
 } 
 
+.pastSearchCard{
+    border-radius: 15px;
+    background-color: #fbf9f9;
+    margin: 5%;
+    
+}
+
+.pastSearchCard:hover h3{
+    background-color: #0b0a0a;
+}
+
+.search-bar{
+    display: flex;
+    align-items: start; 
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    border: none;
+    border-radius: 25px;
+    overflow: hidden;
+    padding: 1%;
+}
+
+.search-bar input{
+    width: 100%;
+    height: 40px;
+    padding: 0 15px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+
+.search-bar button{
+    height: auto; 
+    width: auto; 
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: right;
+    border-radius: 50px;
+}
+
