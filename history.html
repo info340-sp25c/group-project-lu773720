@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INFO 340 Web Development</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet history" href="css/history.css">
+</head>
+<body>
+    <nav>
+        <div class="project-name">
+            MUSIC
+        </div>
+
+        <div class="nav-list">
+            <a href="#">Mood Recommender</a>
+            <a href="#">Profile</a>
+        </div>
+    </nav>
+
+    <section id="Action Bar">
+        <div>
+            <form class="search-bar" action="/search" method="GET">
+                <input type="text" name="song" placeholder="Songs similar to what you're looking for">
+                <button type="submit">Find new music</button>
+            </form>
+        </div>
+
+        <div>
+            <form action="mood-recommender.html">
+                <button class="search-bar" type="submit">Find music based on your mood</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="Past Recommendations" class="pastSearchCard">
+        <div id="Input Songs" class="songlist">
+            <h3>Songs You Referenced</h3>
+            <ul class="songlist">
+                <li class="song">Hello by Adele</li>
+                <li class="song">Movies by Conan Gray</li>
+                <li class="song">Hello by Adele</li>
+                <li class="song">Movies by Conan Gray</li>
+                <li class="song">Hello by Adele</li>
+                <li class="song">Movies by Conan Gray</li>
+            </ul>
+        </div>
+
+        <div id="Recommended Songs" class="album-grid">
+            <h3>Suggested New Music</h3>
+            <div class="album">
+                <img src="home img/stickseason-noah-kahan copy.jpeg" alt="Stick Season Noah Kahan album cover"> 
+                <div>
+                    <p class="album-title">Call Your Mom</p>
+                    <p class="album-artist">Noah Kahan</p>
+                </div>
+            </div>
+
+            <div class="album">
+                <img src="home img/kidkrow-conan-gray copy.jpg" alt="Kid Krow Conan Gray album cover"> 
+                <div>
+                    <p class="album-title">Little League</p>
+                    <p class="album-artist">Conan Gray</p>
+                </div>
+            </div>
+
+            <div class="album">
+                <img src="home img/melodrama-lorde copy.jpeg" alt="Melodrama Lorde album cover"> 
+                <div>
+                    <p class="album-title">Green Light</p>
+                    <p class="album-artist">Lorde</p>
+                </div>
+            </div>
+
+            <div class="album">
+                <img src="home img/pureheroine-lorde copy.jpeg" alt="Pure Heroine Lorde album cover"> 
+                <div>
+                    <p class="album-title">Royals</p>
+                    <p class="album-artist">Lorde</p>
+                </div>
+            </div>
+
+            <div class="album">
+                <img src="home img/hozier-hozier copy.jpeg" alt="Hozier Hozier album cover"> 
+                <div>
+                    <p class="album-title">Take Me to Church</p>
+                    <p class="album-artist">Hozier</p>
+                </div>
+            </div>
+
+            <div class="album">
+                <img src="home img/kidkrow-conan-gray copy.jpg" alt="Kid Krow Conan Gray album cover"> 
+                <div>
+                    <p class="album-title">Jigsaw</p>
+                    <p class="album-artist">Conan Gray</p>
+                </div>
+            </div>
+           
+        </div>
+    </section>
+
+</body>
+</html>
