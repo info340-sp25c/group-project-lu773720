@@ -60,17 +60,6 @@ nav div.menu {
     width:fit-content
 } 
 
-.pastSearchCard{
-    border-radius: 15px;
-    background-color: #fbf9f9;
-    margin: 5%;
-    
-}
-
-.pastSearchCard:hover h3{
-    background-color: #0b0a0a;
-}
-
 .search-bar{
     display: flex;
     align-items: start; 
@@ -105,3 +94,22 @@ nav div.menu {
     border-radius: 50px;
 }
 
+.pastSearchCard{
+    border-radius: 15px;
+    background-color: #fbf9f9;
+    margin: 5%;
+    padding: 1%;
+}
+
+.album-grid{
+    display: grid;
+    grid-template-columns: (3, 1fr);
+    grid-template-rows: (2, auto);
+    gap: 15px;
+    align-content: left;
+}
+
+.album-grid img{
+    width: 200px;
+    height: auto;
+}
