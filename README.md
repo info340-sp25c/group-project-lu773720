@@ -1,33 +1,12 @@
-﻿# group-project-lu773720
+# React + Vite
 
-## INFO340 Project Proposal
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Group members:
-* Anthony Covello
-* Lucian Eckert-Dean
-* Katrina Lu
-* Shuaib Tabit
+Currently, two official plugins are available:
 
-Static Mockup: Work breakdown
-Overall features of our page
-    1. Main Page: The page of their profile with past recommendations and future recommendations
-        a. Personalized information (name)
-        b. Past recommendations
-        c. Music they listen to 
-        d. Music they want to be recommended on + generate 5 song recommendations
-    2. Mood Page: The page that recommends music for them based on their mood
-        a. Mood
-        b. Genre
-        c. Select similar songs
-        d. Suggests 5 songs they might like
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-Deliverables:
-    1. Main Page (pre interaction)
-        a. set up (HTML)
-        b. set CSS
-    1.5 Main Page (post interaction)
+## Expanding the ESLint configuration
 
-    2. Mood Page (for each stage of the feature)
-        a. set up (HTML)
-        b. set CSS
-    2.5 Mood Page (post generating)
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
