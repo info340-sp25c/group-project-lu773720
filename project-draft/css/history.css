@@ -8,6 +8,7 @@
     border-radius: 25px;
     overflow: hidden;
     padding: 1%;
+    text-decoration: none;
 }
 
 .search-bar input{

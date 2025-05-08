@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Music discovery & recommendations">
+    <meta name="author" content="Anthony Covello, Lucian Eckert-Dean, Katrina Lu, Shuaib Tabit">
     <title>Home | Snoopy</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/history.css">
@@ -22,16 +24,19 @@
             </div>
         </nav>
     </div>
-    <div class="profile">
-        <div class="profile-text">
-            <h1>Welcome back, User!</h1>
-            <p class="username">@YourUsername</p>
+    <header>
+        <div class="profile">
+            <div class="profile-text">
+                <h1>Welcome back, User!</h1>
+                <p class="username">@YourUsername</p>
+            </div>
+            <div class="profile-pic-wrapper">
+                <img src="img/profile.png" alt="profile picture" class="profile-pic">
+            </div>
         </div>
-        <div class="profile-pic-wrapper">
-            <img src="img/profile.png" alt="profile picture" class="profile-pic">
-        </div>
-    </div>
+    </header>
 
+    <main>
     <section id="action-bar">
         <h1>Discover New Music</h1>
         <div>
@@ -50,7 +55,7 @@
 
     <section id="past-recs" class="pastSearchCard">
         <div id="input-songs" class="songlist">
-            <h3>Songs You Referenced</h3>
+            <h2>Songs You Referenced</h2>
             <ul class="songlist">
                 <li class="song">Hello by Adele</li>
                 <li class="song">Movies by Conan Gray</li>
@@ -62,7 +67,7 @@
         </div>
 
         <div id="song-recommendations" class="album-grid">
-            <h3>Suggested New Music</h3>
+            <h2>Suggested New Music</h2>
             <div class="album">
                 <img src="img/stickseason-noah-kahan copy.jpeg" alt="Stick Season Noah Kahan album cover">
                 <div>
@@ -113,6 +118,11 @@
 
         </div>
     </section>
+    </main>
+
+    <footer>
+        Footer here
+    </footer>
 
 </body>
 
