@@ -1,7 +1,7 @@
 import React from "react";
-import { LiSUForm } from "./LoginSignUpForm";
-import { SULILayout } from "./LogInSignUpLayout";
-import { Footer } from "./Footer";
+import { LiSUForm } from "../components/LoginSignUpForm";
+import { SULILayout } from "../components/LogInSignUpLayout";
+import { Footer } from "../components/Footer";
 
 export function SignUpPage() {
     return(

@@ -429,7 +429,7 @@ footer {
 }
 
 /* I think this makes it so footer is always at the bootom, i hope this doesnt make other things weird */
-html, body {
+html, body, #root {
   height: 100%;
   margin: 0;
   display: flex;
