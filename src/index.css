@@ -545,13 +545,13 @@ div.border_region_p {
     align-self: center; */
 }
 
-div.account_settings {
+/* div.account_settings {
     /* display:flex;
     align-items:flex-start;
     justify-content:left; */
 
-    /* align-self:first baseline; */
-}
+    /* align-self:first baseline; 
+} */
 
 div.profile-aligner {
      display:flex;
