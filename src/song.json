@@ -1,0 +1,17 @@
+[
+    {
+      "img": "../project-draft/img/verbatim.jpg",
+      "title": "Verbatim",
+      "artist": "Mother Mother",
+      "description": "Lorem ipsum dolor sit amet"
+    },
+    {
+      "img": "./project-draft/img/dojacat.png",
+      "title": "Paint The Town Red",
+      "artist": "Doja Cat",
+      "description": "Lorem ipsum dolor sit amet"
+    }
+    
+
+  ]
+  
