@@ -5,8 +5,9 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 
 import { HomePage } from './pages/HomePage';
-// import { LoginPage } from './pages/LoginPage';
-// import { SignUpPage } from './pages/SignUpPage';
+import { ProfilePage } from './pages/Profile';
+// import { LoginPage } from '../pages/LoginPage';
+// import { SignUpPage } from '../pages/SignUpPage';
 function App() {
     return (
         <>
@@ -17,6 +18,7 @@ function App() {
                 <Route path="/" element={ <HomePage /> }/>
                 {/* <Route path="/mood-rec" element={ }/> */}
                 {/* <Route path="/profile" element={ }/> */}
+                <Route path="/profile" element={ <ProfilePage /> }/>
             </Routes>
             </main>
 

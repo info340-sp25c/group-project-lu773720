@@ -2,26 +2,14 @@ import React from "react";
 import { LiSUForm } from "./LoginSignUpForm";
 import { SULILayout } from "./LogInSignUpLayout";
 import { Footer } from "./Footer";
+import { Navbar } from "../components/Navbar";
 
 export function LoginPage() {
     return(
         //Temp NavBar, will be a component
         <div className="SULI-container">
 
-            <div className="navbar">
-            <nav>
-                <div className="project-name">
-                    <img src="img/snoopy.png" alt="Snoopy logo" />
-                    <p>snoopy</p>
-                </div>
-
-                <div className="nav-list">
-                    <a href="unlogged-1.html">Home</a>
-                    <a href="unlogged-mood-rec.html">Mood Recommender</a>
-                    <a href="login-screen.html"><img className="profile-pic-upper" src="img/profile.png" alt="Profile Picture"/></a> 
-                </div>
-            </nav>
-            </div>
+            {/* <Navbar/> */}
         
         {/* end nav bar comp */}
 
@@ -35,7 +23,7 @@ export function LoginPage() {
                         <p className="sign_up">Don't have an account? <a href="sign-up-screen.html">Sign up!</a></p>
                     </div>
                 </SULILayout>
-                <Footer />
+                {/* <Footer /> */}
     </div>
     )
 }
