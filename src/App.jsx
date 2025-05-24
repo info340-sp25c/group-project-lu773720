@@ -8,7 +8,11 @@ import { HomePage } from './pages/HomePage';
 import { WelcomePage } from './pages/WelcomePage';
 import { ProfilePage } from './pages/Profile';
 import MoodRecommender from './pages/MoodRecommender';
-// import { LoginPage } from '../pages/LoginPage';
+import { LoginPage } from './pages/LoginPage';
+import { SignUpPage } from './pages/SignUpPage';
+
+
+// import { LoginPage } from './pages/LoginPage';
 // import { SignUpPage } from '../pages/SignUpPage';
 function App() {
     const [profileImage, setProfileImage] = useState(() => localStorage.getItem("profileImage") || "img/profile.png")
@@ -44,6 +48,8 @@ function App() {
                 <Route path='/mood-rec' element={<MoodRecommender favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} />}/>
                 {/* <Route path="/mood-rec" element={ }/> */}
                 {/* <Route path="/profile" element={ }/> */}
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/signup" element={<SignUpPage />} />
                 <Route path="/profile" element={ <ProfilePage favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} profileImage={profileImage} setProfileImage={setProfileImage}/> }/>
             </Routes>
             </main>

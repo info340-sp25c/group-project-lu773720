@@ -1,8 +1,9 @@
 import React from "react";
 import { LiSUForm } from "../components/LoginSignUpForm";
 import { SULILayout } from "../components/LogInSignUpLayout";
-import { Footer } from "../components/Footer";
-import { Navbar } from "../components/Navbar";
+import { Footer }   from "../components/Footer";
+import { Navbar }   from "../components/Navbar";
+
 
 export function SignUpPage() {
     return(

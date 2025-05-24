@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 
 export function WelcomePage() {
     return (
@@ -13,8 +15,8 @@ export function WelcomePage() {
                     Find your beat.</h1>
                 <p><strong>Need song recs?</strong> Tell us what you like, and we'll snoop around our song database to find you some great new music.</p>
                 <div>
-                    <button>Log in</button>
-                    <button>Sign up</button>
+                    <Link to="/login"><button>Log in</button></Link>
+                    <Link to="/signup"><button>Sign up</button></Link>
                 </div>
             </div>
         </>
