@@ -17,7 +17,7 @@ export function Navbar({profileImage = "img/profile.png"}) {
                     </div>
 
                     <div className="nav-list">
-                        <NavButtons />
+                        <NavButtons profileImage={profileImage}/>
                     </div>
                     <button
                     type="button"
@@ -30,7 +30,7 @@ export function Navbar({profileImage = "img/profile.png"}) {
                         </i>
                     </button>
                 </nav>
-                {mobileNavOpen && <div className="mobile-nav-list"><NavButtons /></div>}
+                {mobileNavOpen && <div className="mobile-nav-list"><NavButtons profileImage={profileImage}/></div>}
             </div>
         </>
     )

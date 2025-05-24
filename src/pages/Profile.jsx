@@ -4,7 +4,7 @@ import Card  from "../components/Card";
 import songs from '../song.json';
 import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
-import  {SongCard }from "../components/Card";
+
 
 export function ProfilePage({ favorites, addFavorite, removeFavorite, profileImage, setProfileImage}) {
     const [activeSetting, setActiveSetting] = useState(null);
@@ -56,7 +56,7 @@ export function ProfilePage({ favorites, addFavorite, removeFavorite, profileIma
 
    const reader = new FileReader();
    reader.onload = () => {
-     const dataUrl = reader.result;             // this is "data:image/…;base64,…"
+     const dataUrl = reader.result;            
 
      setProfileImage(dataUrl);
      localStorage.setItem("profileImage", dataUrl);
