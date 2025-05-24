@@ -1,17 +1,27 @@
 [
-    {
-      "img": "../project-draft/img/verbatim.jpg",
-      "title": "Verbatim",
-      "artist": "Mother Mother",
-      "description": "Lorem ipsum dolor sit amet"
-    },
-    {
-      "img": "./project-draft/img/dojacat.png",
-      "title": "Paint The Town Red",
-      "artist": "Doja Cat",
-      "description": "Lorem ipsum dolor sit amet"
-    }
-    
-
+  {
+  "img": "../project-draft/img/verbatim.jpg",
+  "title": "Verbatim",
+  "artist": "Mother Mother",
+  "description": "Lorem ipsum dolor sit amet"
+  },
+  {
+  "img": "../project-draft/img/dojacat.png",
+  "title": "Paint The Town Red",
+  "artist": "Doja Cat",
+  "description": "Lorem ipsum dolor sit amet"
+  },
+  {
+  "img": "../project-draft/img/summer.jpg",
+  "title": "Feels Like Summer",
+  "artist": "Childish Gambino",
+  "description": "Lorem ipsum dolor sit amet"
+  },
+  {
+  "img": "../project-draft/img/echo.jpg",
+  "title": "Echo",
+  "artist": "The Marías",
+  "description": "Lorem ipsum dolor sit amet"
+  }
   ]
   
