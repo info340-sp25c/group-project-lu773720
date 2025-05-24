@@ -3,6 +3,7 @@ import { LiSUForm } from "../components/LoginSignUpForm";
 import { SULILayout } from "../components/LogInSignUpLayout";
 import { Footer }   from "../components/Footer";
 import { Navbar }   from "../components/Navbar";
+import { Link, useLocation } from 'react-router-dom';
 
 
 export function LoginPage() {
@@ -19,9 +20,9 @@ export function LoginPage() {
                     <LiSUForm category="password" type="password" label="Password" />
 
                     <div className="submission_links">
-                        <a href="final-index.html" className="btn-primary">LOGIN</a>
+                        <Link to="/home"><btn className="btn-primary">LOGIN</btn></Link>
                         <a href="https://www.youtube.com/watch?v=LoB6mB9qZn4" className="forgotten">Forgot your password?</a>
-                        <p className="sign_up">Don't have an account? <a href="sign-up-screen.html">Sign up!</a></p>
+                        <p className="sign_up">Don't have an account? <Link to="/signup">Sign up!</Link></p>
                     </div>
                 </SULILayout>
                 {/* <Footer /> */}

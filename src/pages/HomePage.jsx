@@ -9,7 +9,7 @@ export function HomePage({profileImage = "img/profile.png"}) {
   <>
     <header>
       <ProfileWindow profileImage={profileImage}/>
-      <SearchBar title="Discover New Music"/>
+      <SearchBar title="Discover New Music" barText={"Enter a song title..."}/>
     </header>
     
     <section id="past-recs" class="pastSearchCard">

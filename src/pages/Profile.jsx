@@ -4,7 +4,7 @@ import Card  from "../components/Card";
 import songs from '../song.json';
 import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
-
+import { Link, useLocation } from 'react-router-dom';
 
 export function ProfilePage({ favorites, addFavorite, removeFavorite, profileImage, setProfileImage}) {
     const [activeSetting, setActiveSetting] = useState(null);
@@ -222,15 +222,16 @@ export function ProfilePage({ favorites, addFavorite, removeFavorite, profileIma
 
                         <li>
                             <p style={{ margin: 0, fontWeight: 'bold' }}>
-                                Sign Out
+                                Sign Out and Reset Account Parameters
                             </p>
+                            <Link to="/login">
                             <button
                             type="button"
-                            onClick={() => {alert("Limited Functionality due to no backend, but Profile Settings have been cleared"); setUsername("default_user"); setEmail("default_email@email.com"); setPassword("default_passkey"); setProfileImage("img/profile.png"); setActiveSetting(null); setPasswordUpdateCounter(0)}}
+                            onClick={() => {alert("Limited Functionality , but Profile Settings have been cleared"); setUsername("default_user"); setEmail("default_email@email.com"); setPassword("default_passkey"); setProfileImage("img/profile.png"); setActiveSetting(null); setPasswordUpdateCounter(0)}}
                             className="setting-btn"
                             >
                             Sign Out
-                            </button>
+                            </button></Link>
                         </li>
 
                     </ul>

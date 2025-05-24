@@ -32,7 +32,7 @@ export default function MoodRecommender({ favorites, addFavorite, removeFavorite
           </div>
         </section>
       </main>
-      <footer> footer </footer>
+     
     </>
   );
 }
