@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from '../components/Card';
-import songs from '../song.json';
+import songs from '../song';
 import { SearchBar } from '../components/SearchBar';
 import '../../project-draft/css/style.css';
 

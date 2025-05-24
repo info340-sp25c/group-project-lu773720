@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Card  from "../components/Card";
-import songs from '../song.json';
+import songs from '../song';
 import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
 import { Link, useLocation } from 'react-router-dom';

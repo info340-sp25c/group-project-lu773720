@@ -1,5 +1,6 @@
 import React from "react";
 
+import snoopy from '../img/snoopy.png';
 
 export function Footer() {
     return (
@@ -7,9 +8,9 @@ export function Footer() {
             <div>
                 <footer className="login_screen">
                     {/* <div className="footer-pic">
-                        <img src="img/snoopy.png" alt="Snoopy logo" />
+                        <img src={snoopy} alt="Snoopy logo" />
                     </div> */}
-                    <img className="footer_img" src="img/snoopy.png" alt="Snoopy logo" />
+                    <img className="footer_img" src={snoopy} alt="Snoopy logo" />
                     Snoopy International Incorporated Digital Industires©
                 </footer>
             </div>

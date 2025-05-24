@@ -3,6 +3,13 @@ import React from "react";
 //import { Header } from "../components/Header";
 import { SearchBar } from "../components/SearchBar";
 import { ProfileWindow } from "../components/ProfileWindow"
+
+import stickseason_noah_kahan_copy from '../img/stickseason-noah-kahan copy.jpeg';
+import kidkrow_conan_gray_copy from '../img/kidkrow-conan-gray copy.jpg';
+import melodrama_lorde_copy from '../img/melodrama-lorde copy.jpeg';
+import pureheroine_lorde_copy from '../img/pureheroine-lorde copy.jpeg';
+import hozier_hozier_copy from '../img/hozier-hozier copy.jpeg';
+
 export function HomePage({profileImage = "img/profile.png"}) {
 
   return (
@@ -28,7 +35,7 @@ export function HomePage({profileImage = "img/profile.png"}) {
         <div id="song-recommendations" class="album-grid">
             <h2>Suggested New Music</h2>
             <div class="album">
-                <img src="img/stickseason-noah-kahan copy.jpeg" alt="Stick Season Noah Kahan album cover"/>
+                <img src={stickseason_noah_kahan_copy} alt="Stick Season Noah Kahan album cover"/>
                 <div>
                     <p class="album-title">Call Your Mom</p>
                     <p class="album-artist">Noah Kahan</p>
@@ -36,7 +43,7 @@ export function HomePage({profileImage = "img/profile.png"}) {
             </div>
 
             <div class="album">
-                <img src="img/kidkrow-conan-gray copy.jpg" alt="Kid Krow Conan Gray album cover"/>
+                <img src={kidkrow_conan_gray_copy} alt="Kid Krow Conan Gray album cover"/>
                 <div>
                     <p class="album-title">Little League</p>
                     <p class="album-artist">Conan Gray</p>
@@ -44,7 +51,7 @@ export function HomePage({profileImage = "img/profile.png"}) {
             </div>
 
             <div class="album">
-                <img src="img/melodrama-lorde copy.jpeg" alt="Melodrama Lorde album cover"/>
+                <img src={melodrama_lorde_copy} alt="Melodrama Lorde album cover"/>
                 <div>
                     <p class="album-title">Green Light</p>
                     <p class="album-artist">Lorde</p>
@@ -52,7 +59,7 @@ export function HomePage({profileImage = "img/profile.png"}) {
             </div>
 
             <div class="album">
-                <img src="img/pureheroine-lorde copy.jpeg" alt="Pure Heroine Lorde album cover"/>
+                <img src={pureheroine_lorde_copy} alt="Pure Heroine Lorde album cover"/>
                 <div>
                     <p class="album-title">Royals</p>
                     <p class="album-artist">Lorde</p>
@@ -60,7 +67,7 @@ export function HomePage({profileImage = "img/profile.png"}) {
             </div>
 
             <div class="album">
-                <img src="img/hozier-hozier copy.jpeg" alt="Hozier Hozier album cover"/>
+                <img src={hozier_hozier_copy} alt="Hozier Hozier album cover"/>
                 <div>
                     <p class="album-title">Take Me to Church</p>
                     <p class="album-artist">Hozier</p>
@@ -68,7 +75,7 @@ export function HomePage({profileImage = "img/profile.png"}) {
             </div>
 
             <div class="album">
-                <img src="img/kidkrow-conan-gray copy.jpg" alt="Kid Krow Conan Gray album cover"/>
+                <img src={kidkrow_conan_gray_copy} alt="Kid Krow Conan Gray album cover"/>
                 <div>
                     <p class="album-title">Jigsaw</p>
                     <p class="album-artist">Conan Gray</p>

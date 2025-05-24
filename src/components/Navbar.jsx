@@ -4,6 +4,8 @@ import { useState } from "react";
 
 import { NavButtons } from './NavButtons';
 
+import snoopy from '../img/snoopy.png';
+
 export function Navbar({profileImage = "img/profile.png"}) {
     const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
@@ -12,7 +14,7 @@ export function Navbar({profileImage = "img/profile.png"}) {
             <div className="navbar">
                 <nav>
                     <div className="project-name">
-                        <img src="img/snoopy.png" alt="Snoopy logo" />
+                        <img src={snoopy} alt="Snoopy logo" />
                         <p>snoopy</p>
                     </div>
 
