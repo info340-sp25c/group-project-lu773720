@@ -1,8 +1,7 @@
 import React from "react";
 
-export function SearchBarModule({title, label, barText, dividerText}) {
-
-    return (
+export function SearchBar({title, label, barText, dividerText}) {
+  return (
         <>
             <div className="search">
                 <h1>{title}</h1>
