@@ -9,7 +9,7 @@ export function HomePage() {
   <>
     <header>
       <ProfileWindow />
-      <SearchBar />
+      <SearchBar title="Discover New Music"/>
     </header>
     
     <section id="past-recs" class="pastSearchCard">
