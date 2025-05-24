@@ -6,6 +6,7 @@ import { Footer } from './components/Footer';
 
 import { HomePage } from './pages/HomePage';
 import { ProfilePage } from './pages/Profile';
+import MoodRecommender from './pages/MoodRecommender';
 // import { LoginPage } from '../pages/LoginPage';
 // import { SignUpPage } from '../pages/SignUpPage';
 function App() {
@@ -16,13 +17,14 @@ function App() {
             <main>
             <Routes>
                 <Route path="/" element={ <HomePage /> }/>
+                <Route path='/mood-rec' element={<MoodRecommender/>}/>
                 {/* <Route path="/mood-rec" element={ }/> */}
                 {/* <Route path="/profile" element={ }/> */}
                 <Route path="/profile" element={ <ProfilePage /> }/>
             </Routes>
             </main>
 
-            <Footer />
+            <Footer/>
         </>
 
         // {/* THIS IS BASICALLY A TESTING GROUND FOR FEATURES */}
