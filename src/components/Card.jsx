@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Card({img, title, artist, description}) {
+export function SongCard({img, title, artist, description}) {
   return (
     <div className="card">
       <img src={img} alt={`${title} album cover art`} />

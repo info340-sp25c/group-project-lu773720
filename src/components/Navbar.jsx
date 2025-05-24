@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-export function Navbar() {
+export function Navbar({profileImage = "img/profile.png"}) {
     const location = useLocation();
     const pathName = location.pathname;
 
@@ -21,7 +21,7 @@ export function Navbar() {
                     <div className="nav-list">
                         <Link to="/">{generatePageText("Home", "/")}</Link>
                         <Link to="/mood-rec">{generatePageText("Mood Recommender", "/mood-rec")}</Link>
-                        <Link to="/profile"><img className="profile-pic-upper" src="img/profile.png" alt="Profile Picture" /></Link>
+                        <Link to="/profile"><img className="profile-pic-upper" src={profileImage} alt="Profile Picture" /></Link>
                     </div>
                 </nav>
             </div>

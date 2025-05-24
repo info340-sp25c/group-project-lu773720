@@ -9,16 +9,17 @@ import { ProfilePage } from './pages/Profile';
 // import { LoginPage } from '../pages/LoginPage';
 // import { SignUpPage } from '../pages/SignUpPage';
 function App() {
+    const [profileImage, setProfileImage] = useState(() => localStorage.getItem("profileImage") || "img/profile.png")
     return (
         <>
-            <Navbar />
+            <Navbar profileImage={profileImage} />
 
             <main>
             <Routes>
                 <Route path="/" element={ <HomePage /> }/>
                 {/* <Route path="/mood-rec" element={ }/> */}
                 {/* <Route path="/profile" element={ }/> */}
-                <Route path="/profile" element={ <ProfilePage /> }/>
+                <Route path="/profile" element={ <ProfilePage profileImage={profileImage} setProfileImage={setProfileImage}/> }/>
             </Routes>
             </main>
 
