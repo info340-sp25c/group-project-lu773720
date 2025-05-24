@@ -1,13 +1,11 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+
+import { useState } from "react";
+
+import { NavButtons } from './NavButtons';
 
 export function Navbar() {
-    const location = useLocation();
-    const pathName = location.pathname;
-
-    let generatePageText = function(text, associatedPath) {
-        return pathName === associatedPath ? (<strong>{text}</strong>) : (text);
-    }
+    const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
     return (
         <>
@@ -19,11 +17,20 @@ export function Navbar() {
                     </div>
 
                     <div className="nav-list">
-                        <Link to="/">{generatePageText("Home", "/")}</Link>
-                        <Link to="/mood-rec">{generatePageText("Mood Recommender", "/mood-rec")}</Link>
-                        <Link to="/profile"><img className="profile-pic-upper" src="img/profile.png" alt="Profile Picture" /></Link>
+                        <NavButtons />
                     </div>
+                    <button
+                    type="button"
+                    onClick={() => {setMobileNavOpen(!mobileNavOpen)}}
+                    className="nav-menu-button">
+                        <i
+                            className="material-icons"
+                            style={{ fontSize: '1.5rem', margin: '0.5rem 0.75rem 0.75rem 0.75rem' }}>
+                            menu
+                        </i>
+                    </button>
                 </nav>
+                {mobileNavOpen && <div className="mobile-nav-list"><NavButtons /></div>}
             </div>
         </>
     )
