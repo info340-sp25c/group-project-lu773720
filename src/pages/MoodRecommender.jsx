@@ -4,7 +4,7 @@ import songs from '../song.json';
 import { SearchBarModule } from '../components/SearchBar';
 import '../../project-draft/css/style.css';
 
-export default function MoodRecommender() {
+export default function MoodRecommender({ favorites, addFavorite, removeFavorite }) {
   return (
     <>
     <SearchBarModule
@@ -24,6 +24,9 @@ export default function MoodRecommender() {
                 title={song.title}
                 artist={song.artist}
                 description={song.description}
+                favorites={favorites}
+                addFavorite={addFavorite}
+                removeFavorite={removeFavorite}
               />
             ))}
           </div>

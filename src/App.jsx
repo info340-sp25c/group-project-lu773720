@@ -10,6 +10,25 @@ import MoodRecommender from './pages/MoodRecommender';
 // import { LoginPage } from '../pages/LoginPage';
 // import { SignUpPage } from '../pages/SignUpPage';
 function App() {
+    const [favorites, setFavorites] = useState([]);
+    
+    console.log('Favorites now is:', favorites);
+
+    const addFavorite = song => {
+        setFavorites(favs => {
+        if (favs.some(s => s.title === song.title && s.artist === song.artist)) {
+            return favs;
+        }
+        return [...favs, song];
+        });
+    };
+
+    const removeFavorite = song => {
+        setFavorites(favs =>
+        favs.filter(s => !(s.title === song.title && s.artist === song.artist))
+        );
+    };
+
     return (
         <>
             <Navbar />
@@ -17,10 +36,10 @@ function App() {
             <main>
             <Routes>
                 <Route path="/" element={ <HomePage /> }/>
-                <Route path='/mood-rec' element={<MoodRecommender/>}/>
+                <Route path='/mood-rec' element={<MoodRecommender favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} />}/>
                 {/* <Route path="/mood-rec" element={ }/> */}
                 {/* <Route path="/profile" element={ }/> */}
-                <Route path="/profile" element={ <ProfilePage /> }/>
+                <Route path="/profile" element={ <ProfilePage favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} /> }/>
             </Routes>
             </main>
 
