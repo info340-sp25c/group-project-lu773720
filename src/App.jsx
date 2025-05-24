@@ -5,6 +5,7 @@ import { Navbar } from './components/Navbar';
 import { Footer } from './components/Footer';
 
 import { HomePage } from './pages/HomePage';
+import { WelcomePage } from './pages/WelcomePage';
 import { ProfilePage } from './pages/Profile';
 import MoodRecommender from './pages/MoodRecommender';
 // import { LoginPage } from '../pages/LoginPage';
@@ -35,6 +36,9 @@ function App() {
 
             <main>
             <Routes>
+                {/* this should eventually be the home page if the user isn't logged in */}
+                <Route path="/welcome" element={ <WelcomePage /> }/>
+
                 <Route path="/" element={ <HomePage /> }/>
                 <Route path='/mood-rec' element={<MoodRecommender favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} />}/>
                 {/* <Route path="/mood-rec" element={ }/> */}

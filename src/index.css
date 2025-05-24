@@ -610,3 +610,39 @@ div.profile-aligner {
     /* align-self:first baseline; */
 }
 
+
+
+/* Welcome page CSS */
+
+.landing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 4em;
+    background-image: linear-gradient(to bottom right, #222, #444);
+    box-shadow: 6px 6px 6px #bbb;
+    color: white;
+    padding-bottom: 3em;
+}
+
+.landing p {
+    flex: 1;
+    text-align: center;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: x-large;
+    max-width: 30em;
+    margin-bottom: 1em;
+}
+
+.landing-header {
+    flex: 1;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 4rem;
+    padding: 2rem 0;
+}
+
+.landing button {
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: x-large;
+}
