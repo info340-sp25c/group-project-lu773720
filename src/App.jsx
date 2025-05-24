@@ -42,9 +42,9 @@ function App() {
             <main>
             <Routes>
                 {/* this should eventually be the home page if the user isn't logged in */}
-                <Route path="/welcome" element={ <WelcomePage /> }/>
+                <Route path="/" element={ <WelcomePage /> }/>
 
-                <Route path="/" element={ <HomePage /> }/>
+                <Route path="/home" element={ <HomePage profileImage={profileImage}/> }/>
                 <Route path='/mood-rec' element={<MoodRecommender favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} />}/>
                 {/* <Route path="/mood-rec" element={ }/> */}
                 {/* <Route path="/profile" element={ }/> */}

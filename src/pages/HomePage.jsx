@@ -3,12 +3,12 @@ import React from "react";
 //import { Header } from "../components/Header";
 import { SearchBar } from "../components/SearchBar";
 import { ProfileWindow } from "../components/ProfileWindow"
-export function HomePage() {
+export function HomePage({profileImage = "img/profile.png"}) {
 
   return (
   <>
     <header>
-      <ProfileWindow />
+      <ProfileWindow profileImage={profileImage}/>
       <SearchBar title="Discover New Music"/>
     </header>
     

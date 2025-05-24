@@ -1,13 +1,13 @@
 import React from 'react';
 import Card from '../components/Card';
 import songs from '../song.json';
-import { SearchBarModule } from '../components/SearchBar';
+import { SearchBar } from '../components/SearchBar';
 import '../../project-draft/css/style.css';
 
 export default function MoodRecommender({ favorites, addFavorite, removeFavorite }) {
   return (
     <>
-    <SearchBarModule
+    <SearchBar
         title="Mood Music Recommender"
         label="Enter your current mood"
         barText="Input Current Mood.."

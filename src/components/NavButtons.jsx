@@ -11,7 +11,7 @@ export function NavButtons({profileImage="img/profile.png"}) {
 
     return (
         <>
-            <Link to="/">{generatePageText("Home", "/")}</Link>
+            <Link to="/home">{generatePageText("Home", "/home")}</Link>
             <Link to="/mood-rec">{generatePageText("Mood Recommender", "/mood-rec")}</Link>
             <Link to="/profile"><img className="profile-pic-upper" src={profileImage} alt="Profile Picture" /></Link>
         </>
