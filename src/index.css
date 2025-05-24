@@ -13,6 +13,9 @@ nav {
     background-color:black;
     color:white;
     padding: 0 .1rem .1rem .5rem;
+}
+
+.navbar {
     font-family: 'Helvetica', 'Arial', sans-serif;
     font-size: xx-large;
     user-select: none;
@@ -28,22 +31,57 @@ nav {
   
 
 .nav-list {
-    display:flex;
+    display: none;
     list-style: none;
     gap: 2rem;
-    padding: 0rem 2.5rem 0rem 0rem;
+    padding: 0.5rem 2.5rem 0rem 0rem;
 }
 
-  .nav-list a {
+.nav-list a, .mobile-nav-list a {
     color: white;
     text-decoration: none;
     font-weight: 500;
     padding: 0.25em 0;
-  }
+}
 
-.nav-list a:hover {
+.nav-list a:hover, .mobile-nav-list a:hover {
     color: #c9a30b;
 }
+
+.mobile-nav-list {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    background: #222;
+    gap: 0.5rem;
+}
+
+.mobile-nav-list a:not(:nth-last-child(-n+2)) {
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #555;
+}
+
+.mobile-nav-list a:last-child {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.nav-menu-button {
+    margin-right: 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .mobile-nav-list {
+        display: none;
+    }
+    .nav-list {
+        display: flex;
+    }
+    .nav-menu-button {
+        display: none;
+    }
+}
+
 .project-name {
     font-size: 1.25rem;
     font-weight: bold;
@@ -221,21 +259,32 @@ section {
     padding: .25rem 1rem 1rem 1rem;
 }
 
-.card>a {
-    width: auto;
-    padding: 0.25rem 1rem 0.5rem 1rem;
-    background-color: goldenrod;
-    color: black;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 0 0 10px 10px;
-    text-align: right;
+.card > a { display: none; }
 
-    font-size: 1.25rem;
+.card-footer {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  padding: 0.5rem 1rem;            
+  background-color: white;         
+  border-radius: 0 0 10px 10px;     
 }
 
-.card>a:hover {
-    background-color: darkgoldenrod;
+
+.card-footer button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.card-footer .card-play {
+  background: none;     
+  padding: 0;            
+  color: black;          
+  font-weight: bold;     
+  text-decoration: none;
 }
 
 .material-icons {
@@ -561,3 +610,39 @@ div.profile-aligner {
     /* align-self:first baseline; */
 }
 
+
+
+/* Welcome page CSS */
+
+.landing {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 4em;
+    background-image: linear-gradient(to bottom right, #222, #444);
+    box-shadow: 6px 6px 6px #bbb;
+    color: white;
+    padding-bottom: 3em;
+}
+
+.landing p {
+    flex: 1;
+    text-align: center;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: x-large;
+    max-width: 30em;
+    margin-bottom: 1em;
+}
+
+.landing-header {
+    flex: 1;
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    font-size: 4rem;
+    padding: 2rem 0;
+}
+
+.landing button {
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: x-large;
+}

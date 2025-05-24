@@ -1,10 +1,12 @@
 import React from "react";
 import { useState } from "react";
+import Card  from "../components/Card";
+import songs from '../song.json';
 import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
 import  {SongCard }from "../components/Card";
 
-export function ProfilePage({profileImage, setProfileImage}) {
+export function ProfilePage({ favorites, addFavorite, removeFavorite, profileImage, setProfileImage}) {
     const [activeSetting, setActiveSetting] = useState(null);
     const [username, setUsername] = useState(() => localStorage.getItem("username") || "default_user")
     const [newUsername, setNewUsername] = useState("")
@@ -247,11 +249,20 @@ export function ProfilePage({profileImage, setProfileImage}) {
                     </header>
 
                     <div className="card-container">
-
-                        <SongCard img="img/verbatim.jpg" title="Verbatim" artist="Mother Mother" description="Your Mother XD"/>
-                        <SongCard img="img/dojacat.png" title="Paint The Town Red" artist="Doja Cat" description="Doja Car!!"/>
-                        <SongCard img="img/echo.jpg" title="Echo" artist="The Marías" description="Echo Cover Art"/>
-
+                    {favorites.length > 0 ? (
+                        favorites.map((song, i) => (
+                        <Card
+                            key={i}
+                            img={song.img}
+                            title={song.title}
+                            artist={song.artist}
+                            description={song.description}
+                            favorites={favorites}
+                            addFavorite={addFavorite}
+                            removeFavorite={removeFavorite}
+                        />
+                        ))
+                    ) : ( <p>You haven’t favorited anything yet.</p>)}
                     </div>
                 </section>
                 {/* I'm not sure we need the following section tbh */}
@@ -260,33 +271,24 @@ export function ProfilePage({profileImage, setProfileImage}) {
                         <h2>Your History</h2>
                     </header>
                     <div className="card-container">
-
-                        <div className="card">
-                            <img src="img/verbatim.jpg" alt="Verbatim cover art" />
-                            <h1>Verbatim</h1>
-                            <h2>Mother Mother</h2>
-                            <p>Your go-to track</p>
-                            <div style={{ flexGrow: 1 }}></div>
-                            <a href="#"><i className="material-icons" style={{ fontSize: "1.5rem" }}>play_arrow</i> Play</a>
-                        </div>
-
-                        <div className="card">
-                            <img src="img/dojacat.png" alt="Paint The Town Red cover art" />
-                            <h1>Paint The Town Red</h1>
-                            <h2>Doja Cat</h2>
-                            <p>Your go-to track</p>
-                            <div style={{ flexGrow: 1 }}></div>
-                            <a href="#"><i className="material-icons" style={{ fontSize: "1.5rem" }}>play_arrow</i> Play</a>
-                        </div>
-
-                        <div className="card">
-                            <img src="img/echo.jpg" alt="Echo cover art" />
-                            <h1>Echo</h1>
-                            <h2>The Marías</h2>
-                            <p>Your go-to track</p>
-                            <div style={{ flexGrow: 1 }}></div>
-                            <a href="#"><i className="material-icons" style={{ fontSize: "1.5rem" }}>play_arrow</i> Play</a>
-                        </div>
+                        <Card
+                            img="../project-draft/img/summer.jpg"
+                            title="Feels Like Summer"
+                            artist="Childish Gambino"
+                            description="Lorem ipsum dolor sit amet"
+                            favorites={favorites}
+                            addFavorite={addFavorite}
+                            removeFavorite={removeFavorite}
+                        />
+                        <Card
+                            img="../project-draft/img/echo.jpg"
+                            title="Echo"
+                            artist="The Marías"
+                            description="Lorem ipsum dolor sit amet"
+                            favorites={favorites}
+                            addFavorite={addFavorite}
+                            removeFavorite={removeFavorite}
+                        />
 
                     </div>
                 </section> */}
