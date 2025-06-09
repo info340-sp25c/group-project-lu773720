@@ -10,6 +10,7 @@ import { ProfilePage } from './pages/Profile';
 import MoodRecommender from './pages/MoodRecommender';
 import { LoginPage } from './pages/LoginPage';
 import { SignUpPage } from './pages/SignUpPage';
+import { Test } from './pages/Test';
 
 
 // import { LoginPage } from './pages/LoginPage';
@@ -43,6 +44,8 @@ function App() {
             <Routes>
                 {/* this should eventually be the home page if the user isn't logged in */}
                 <Route path="/" element={ <WelcomePage /> }/>
+
+                <Route path="/test" element={ <Test favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} /> }/>
 
                 <Route path="/home" element={ <HomePage profileImage={profileImage}/> }/>
                 <Route path='/mood-rec' element={<MoodRecommender favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} />}/>

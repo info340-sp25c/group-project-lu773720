@@ -18,6 +18,25 @@ export async function getTracksFromArtist(artistId, pageNumber = 0) {
     return data['content'];
 }
 
+export async function getThumbnailUrlFromTrackUrl(trackUrl) {
+  const cacheKey = `thumbCache:${trackUrl}`;
+  const cached = localStorage.getItem(cacheKey);
+
+  if (cached) {
+    return cached;
+  }
+
+  const response = await fetch(`https://open.spotify.com/oembed?url=${trackUrl}`);
+  if (response.status !== 200) return;
+
+  const data = await response.json();
+  const thumbnail = data['thumbnail_url'];
+
+  localStorage.setItem(cacheKey, thumbnail);
+
+  return thumbnail;
+}
+
 export async function getRecommendation(songIds, moods, numRecs = 10) {
     // Combines the paramters of all the provided moods into one. For most paramters, they're all multiplied togehter
     // (since they're already normalized on a scale of 0-1). For the few exceptions, they're handled differently.
@@ -69,6 +88,19 @@ export async function getRecommendation(songIds, moods, numRecs = 10) {
     return data;
 }
 
-//console.log(await searchArtist('Justice', 1)); //<-- comes up with a lot of random results, I had to find their ID in page 2 (id 1)
-//console.log(await getTracksFromArtist('fca8c382-704f-42df-84c8-7777ce840045')); //<-- get a random song from Justice
+//console.log(await searchArtist('Magdalena Bay'));
+//console.log(await getTracksFromArtist('d5a22347-959c-4f21-9a56-7c7bab00c249'));
+// console.log(await getRecommendation([
+//     '7cbd653a-c629-4ab7-96a7-22476df094c6',
+//     '6cce02d9-c490-455c-9285-268cb3ec6c3f',
+//     '88c9ac18-c3ce-4047-bc38-e921aec09152',
+//     '0a5d7fb9-008c-4730-a17e-565702eeb9a9',
+//     '2f8b3f6a-729f-4fcb-b886-899fa628f06e'
+// ], [moodList['happy'], moodList['energetic']]));
+// console.log(await getThumbnailUrlFromTrackUrl("https://open.spotify.com/track/2hGchv7KYaINz9Z1qzufNm"));
+
+
+
+//console.log(await searchArtist('Sabrina Carpenter')); 
+//console.log(await getTracksFromArtist('c07149cc-50c1-48b4-8487-ffa71f721e94'));
 //console.log(await getRecommendation(['1c67d093-9775-4eb5-87f1-2d66c00f71f4'], [moodList['happy'], moodList['energetic'], moodList['epic']]));
