@@ -72,10 +72,12 @@ export function Test({ favorites, addFavorite, removeFavorite }) {
               {songs.map((song, i) => (
                 <Card
                   key={song.id}
+                  id={song.id}
                   img={thumbnails[song.id] || 'img/profile.png'}
                   title={song.trackTitle}
                   artist={song.artists.map(a => a.name).join(', ')}
                   description={`Duration: ${Math.round(song.durationMs / 1000)}s`}
+                  url={song.href}
                   favorites={favorites}
                   addFavorite={addFavorite}
                   removeFavorite={removeFavorite}

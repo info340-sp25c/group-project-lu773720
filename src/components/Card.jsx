@@ -1,9 +1,9 @@
 import React from 'react';
 
-export default function Card({img, title, artist, description, favorites, addFavorite, removeFavorite}) {
+export default function Card({id, img, title, artist, description, url, favorites, addFavorite, removeFavorite}) {
 
   const isFav = favorites.some(s => s.title === title && s.artist === artist);
-  const song = { img, title, artist, description };
+  const song = { id, img, title, artist, description };
 
   const toggleFav = () => {
     isFav ? removeFavorite(song) : addFavorite(song);
@@ -29,7 +29,7 @@ export default function Card({img, title, artist, description, favorites, addFav
           </i>
         </button>
 
-        <a href="#" className="card-play" aria-label="Play">
+        <a href={url} className="card-play" aria-label="Play" target="_blank">
           <i className="material-icons" style={{ fontSize: '1.5rem' }}>
             play_arrow
           </i>{' '}
