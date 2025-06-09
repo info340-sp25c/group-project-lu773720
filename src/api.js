@@ -1,5 +1,3 @@
-import moodList from './moods.js';
-
 export async function searchArtist(artistName, pageNumber = 0) {
     const response = await fetch(`https://api.reccobeats.com/v1/artist/search?page=${pageNumber}&searchText=${encodeURIComponent(artistName)}`);
     
@@ -85,7 +83,7 @@ export async function getRecommendation(songIds, moods, numRecs = 10) {
     if (response.status !== 200) return;
     
     const data = await response.json();
-    return data;
+    return data['content'];
 }
 
 //console.log(await searchArtist('Magdalena Bay'));

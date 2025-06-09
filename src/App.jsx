@@ -18,6 +18,7 @@ import { Test } from './pages/Test';
 function App() {
     const [profileImage, setProfileImage] = useState(() => localStorage.getItem("profileImage") || "img/profile.png")
     const [favorites, setFavorites] = useState([]);
+    const [thumbnails, setThumbnails] = useState({});
     
     console.log('Favorites now is:', favorites);
 
@@ -45,10 +46,10 @@ function App() {
                 {/* this should eventually be the home page if the user isn't logged in */}
                 <Route path="/" element={ <WelcomePage /> }/>
 
-                <Route path="/test" element={ <Test favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} /> }/>
+                <Route path="/test" element={ <Test favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} thumbnails={thumbnails} setThumbnails={setThumbnails} /> }/>
 
                 <Route path="/home" element={ <HomePage profileImage={profileImage}/> }/>
-                <Route path='/mood-rec' element={<MoodRecommender favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} />}/>
+                <Route path='/mood-rec' element={<MoodRecommender favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} thumbnails={thumbnails} setThumbnails={setThumbnails} />}/>
                 {/* <Route path="/mood-rec" element={ }/> */}
                 {/* <Route path="/profile" element={ }/> */}
                 <Route path="/login" element={<LoginPage />} />

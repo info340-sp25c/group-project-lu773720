@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { searchArtist, getTracksFromArtist, getThumbnailUrlFromTrackUrl } from '../api.js';
 import Card from '../components/Card';
 
-export function Test({ favorites, addFavorite, removeFavorite }) {
+export function Test({ favorites, addFavorite, removeFavorite, thumbnails, setThumbnails }) {
   const [query, setQuery] = useState('');
   const [artists, setArtists] = useState([]);
   const [selectedArtist, setSelectedArtist] = useState(null);
   const [songs, setSongs] = useState([]);
-  const [thumbnails, setThumbnails] = useState({});
 
   const handleSearch = async () => {
     const result = await searchArtist(query);
