@@ -1,48 +1,47 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { updateProfile, updateEmail, updatePassword } from "firebase/auth";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import {doc, updateDoc, getDoc} from "firebase/firestore";
+import {auth, musicData} from "../../index";
 import Card  from "../components/Card";
 import songs from '../song';
 import { Footer } from "../components/Footer";
 import { Navbar } from "../components/Navbar";
 import { Link, useLocation } from 'react-router-dom';
 
-export function ProfilePage({ favorites, addFavorite, removeFavorite, profileImage, setProfileImage}) {
+export function ProfilePage({ user, favorites, addFavorite, removeFavorite}) {
+
+    if (!user) return <p>Please <Link to="/login">log in</Link> first!</p>
     const [activeSetting, setActiveSetting] = useState(null);
-    const [username, setUsername] = useState(() => localStorage.getItem("username") || "default_user")
     const [newUsername, setNewUsername] = useState("")
-    const [password, setPassword] = useState(() => localStorage.getItem("password") || "default_passkey")
     const [newPassword, setNewPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
     const [passwordUpdateCounter, setPasswordUpdateCounter] = useState(() => localStorage.getItem("passwordUpdateCounter") || 0)
-    const[email, setEmail] = useState(() => localStorage.getItem("email") || "default_email@email.com")
     const [newEmail, setNewEmail] = useState("")
     const [newProfileImage, setNewProfileImage] = useState(null);
-
+    const [photoPreview, setPhotoPreview] = useState("img/profile.png")
 
     
     // event handlers
-    const handleUsername = (e) => {
+    const handleUsername = async (e) => {
         e.preventDefault()
-        setUsername(newUsername)
-        localStorage.setItem("username", newUsername)
-        setNewUsername("")
+        await updateProfile(user, {displayName: newUsername})
         setActiveSetting(null)
     }
 
-    const handleEmail = (e) => {
+    const handleEmail = async (e) => {
         e.preventDefault()
-        setEmail(newEmail)
-        localStorage.setItem("email", newEmail)
-        setNewEmail("")
+        await updateEmail(user, newEmail)
         setActiveSetting(null)
     }
 
-    const handlePassword = (e) => {
+    const handlePassword = async (e) => {
         e.preventDefault()
-        setPassword(newPassword)
-        localStorage.setItem("password", newPassword)
-        setNewPassword("")
-        setActiveSetting(null)
+        if(newPassword === confirmPassword) {
+            await updatePassword(user, confirmPassword)
+            setActiveSetting(null)
+        }
     }
   
    const passwordPlusOne = () => {
@@ -51,21 +50,54 @@ export function ProfilePage({ favorites, addFavorite, removeFavorite, profileIma
    }
 
     const handleProfileImage = (e) => {
-   e.preventDefault();
-   if (!newProfileImage) return;
+        e.preventDefault()
+        
+        if(!newProfileImage) return;
+        
+        const reader = new FileReader()
+        reader.readAsDataURL(newProfileImage)
 
-   const reader = new FileReader();
-   reader.onload = () => {
-     const dataUrl = reader.result;            
+        reader.onloadend = async () => {
+            const imgString = reader.result
 
-     setProfileImage(dataUrl);
-     localStorage.setItem("profileImage", dataUrl);
+            try {
+                await updateDoc(doc(musicData, "users", user.uid), {profileImageString: imgString})
+                await updateProfile(user, { photoURL: imgString})
+                setPhotoPreview(imgString);
+                setActiveSetting(null)
+                setNewProfileImage(null)
+            } catch (error) {
+                console.error("Failed to update pfp:", error)
+                alert("Error: Failed to Upload Profile Image")
+            }
+        }
 
-     setNewProfileImage(null);
-     setActiveSetting(null);
-   };
-   reader.readAsDataURL(newProfileImage);
- };
+    };
+
+
+    useEffect(() => {
+    async function fetchProfileImage() {
+      try {
+        const userDocRef = doc(musicData, "users", user.uid)
+        const userDocSnap = await getDoc(userDocRef)
+
+        if (userDocSnap.exists()) {
+          const data = userDocSnap.data()
+          if (data.profileImageString) {
+            setPhotoPreview(data.profileImageString)
+          } else if (user.photoURL) {
+            setPhotoPreview(user.photoURL)
+          }
+        } else if (user.photoURL) {
+            setPhotoPreview(user.photoURL)
+        }
+      } catch (error) {
+        console.error("Error fetching profile image from Firestore:", error)
+      }
+    }
+
+    fetchProfileImage()
+  }, [user.uid, user.photoURL])
 
     
     return (
@@ -89,7 +121,7 @@ export function ProfilePage({ favorites, addFavorite, removeFavorite, profileIma
                                     
                                 </p>
                                 <div className="profile-pic-wrapper">
-                                    <img src={profileImage} alt="profile picture" className="profile-pic"/>
+                                    <img src={photoPreview} alt="profile picture" className="profile-pic"/>
                                 </div>
                             </div>
                             <button
@@ -114,7 +146,7 @@ export function ProfilePage({ favorites, addFavorite, removeFavorite, profileIma
                                                         if (file) setNewProfileImage(file);
                                                     }}
                                                 />
-                                                <button type="submit" disalbed={!newProfileImage}>Save</button>
+                                                <button type="submit" disabled={!newProfileImage}>Save</button>
                                                 <button type="reset" onClick={() => {setActiveSetting(null); setNewProfileImage(null)}}>Cancel</button>
                                             </form>
                                         </label>
@@ -124,7 +156,7 @@ export function ProfilePage({ favorites, addFavorite, removeFavorite, profileIma
 
                         <li>
                             <p style={{ margin: 0, fontWeight: 'bold' }}>
-                                Current Username: {username}
+                                Current Username: {user.displayName}
                             </p>
                             <button
                             type="button"
@@ -153,7 +185,7 @@ export function ProfilePage({ favorites, addFavorite, removeFavorite, profileIma
                         
                         <li>
                             <p style={{ margin: 0, fontWeight: 'bold' }}>
-                                Current Email: {email}
+                                Current Email: {user.email}
                             </p>
                             <button
                             type="button"
@@ -222,12 +254,12 @@ export function ProfilePage({ favorites, addFavorite, removeFavorite, profileIma
 
                         <li>
                             <p style={{ margin: 0, fontWeight: 'bold' }}>
-                                Sign Out and Reset Account Parameters
+                                Log out of your profile
                             </p>
                             <Link to="/login">
                             <button
                             type="button"
-                            onClick={() => {alert("Limited Functionality , but Profile Settings have been cleared"); setUsername("default_user"); setEmail("default_email@email.com"); setPassword("default_passkey"); setProfileImage("img/profile.png"); setActiveSetting(null); setPasswordUpdateCounter(0)}}
+                            onClick={() => auth.signOut()}
                             className="setting-btn"
                             >
                             Sign Out
@@ -266,33 +298,6 @@ export function ProfilePage({ favorites, addFavorite, removeFavorite, profileIma
                     ) : ( <p>You haven’t favorited anything yet.</p>)}
                     </div>
                 </section>
-                {/* I'm not sure we need the following section tbh */}
-                {/* <section>
-                    <header className="search" style={{ paddingTop: 0, boxShadow: "none" }}>
-                        <h2>Your History</h2>
-                    </header>
-                    <div className="card-container">
-                        <Card
-                            img="../project-draft/img/summer.jpg"
-                            title="Feels Like Summer"
-                            artist="Childish Gambino"
-                            description="Lorem ipsum dolor sit amet"
-                            favorites={favorites}
-                            addFavorite={addFavorite}
-                            removeFavorite={removeFavorite}
-                        />
-                        <Card
-                            img="../project-draft/img/echo.jpg"
-                            title="Echo"
-                            artist="The Marías"
-                            description="Lorem ipsum dolor sit amet"
-                            favorites={favorites}
-                            addFavorite={addFavorite}
-                            removeFavorite={removeFavorite}
-                        />
-
-                    </div>
-                </section> */}
             </main>
 
             {/* <Footer /> */}

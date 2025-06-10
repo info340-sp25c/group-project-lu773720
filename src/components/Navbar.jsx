@@ -7,9 +7,7 @@ import { NavButtons } from './NavButtons';
 import snoopy from '../img/snoopy.png';
 
 export function Navbar({profileImage = "img/profile.png"}) {
-    const [mobileNavOpen, setMobileNavOpen] = useState(false);
-
-    return (
+    const [mobileNavOpen, setMobileNavOpen] = useState(false);    return (
         <>
             <div className="navbar">
                 <nav>

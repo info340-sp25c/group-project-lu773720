@@ -10,12 +10,12 @@ import melodrama_lorde_copy from '../img/melodrama-lorde copy.jpeg';
 import pureheroine_lorde_copy from '../img/pureheroine-lorde copy.jpeg';
 import hozier_hozier_copy from '../img/hozier-hozier copy.jpeg';
 
-export function HomePage({profileImage = "img/profile.png"}) {
+export function HomePage({ user, profileImage = "img/profile.png"}) {
 
   return (
   <>
     <header>
-      <ProfileWindow profileImage={profileImage}/>
+      <ProfileWindow user={user} profileImage={profileImage}/>
       <SearchBar title="Discover New Music" barText={"Enter a song title..."}/>
     </header>
     
