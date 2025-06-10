@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { searchArtist, getTracksFromArtist, getThumbnailUrlFromTrackUrl } from '../api.js';
 import Card from '../components/Card';
+import { SearchBar } from '../components/SearchBar';
+
 
 export function Test({ favorites, addFavorite, removeFavorite, thumbnails, setThumbnails }) {
   const [query, setQuery] = useState('');
@@ -43,14 +45,15 @@ export function Test({ favorites, addFavorite, removeFavorite, thumbnails, setTh
   return (
     <main>
       <section>
-        <h1>Search Artists</h1>
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Enter artist name"
+      <SearchBar
+          title="Search Artists"
+          label="Search for artist"
+          barText="Enter artist name"
+          dividerText=""
+          query={query}
+          setQuery={setQuery}
+          onSearch={handleSearch}
         />
-        <button onClick={handleSearch}>Search</button>
 
         {!selectedArtist && artists.length > 0 && (
           <ul>
