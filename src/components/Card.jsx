@@ -1,25 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Lottie from 'lottie-react';
 import heartAnimation from './heart-burst.json';
 
-export default function Card({id, img, title, artist, description, url, favorites, addFavorite, removeFavorite}) {
-
+export default function Card({
+  id, img, title, artist, description, url,
+  favorites, addFavorite, removeFavorite
+}) {
   const [showAnimation, setShowAnimation] = useState(false);
-  
   const isFav = favorites.some(s => s.title === title && s.artist === artist);
   const song = { id, img, title, artist, description };
 
   const toggleFav = () => {
-    if (isFav) { 
-      removeFavorite(song)
-    } else { 
+    if (isFav) {
+      removeFavorite(song);
+    } else {
       addFavorite(song);
       setShowAnimation(true);
       setTimeout(() => setShowAnimation(false), 1000);
+    }
   };
 
   return (
-    <div className="card">
+    <div className="card" style={{ position: 'relative' }}>
       <img src={img} alt={`${title} album cover art`} />
       <h1>{title}</h1>
       <h2>{artist}</h2>
@@ -38,7 +40,13 @@ export default function Card({id, img, title, artist, description, url, favorite
           </i>
         </button>
 
-        <a href={url} className="card-play" aria-label="Play" target="_blank">
+        <a
+          href={url}
+          className="card-play"
+          aria-label="Play"
+          target="_blank"
+          rel="noreferrer"
+        >
           <i className="material-icons" style={{ fontSize: '1.5rem' }}>
             play_arrow
           </i>{' '}
@@ -63,5 +71,4 @@ export default function Card({id, img, title, artist, description, url, favorite
       )}
     </div>
   );
-}
 }
