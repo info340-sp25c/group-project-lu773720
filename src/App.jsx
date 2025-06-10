@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'; //import React Component
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
 import {auth} from "../index";
 import { musicData } from '../index';
@@ -91,7 +91,7 @@ function App() {
 
     return (
         <>
-            <Navbar profileImage={profileImage}/>
+            <Navbar user={currentUser} profileImage={profileImage}/>
 
             <main>
             <Routes>
@@ -107,6 +107,7 @@ function App() {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/signup" element={<SignUpPage />} />
                 <Route path="/profile" element={ <ProfilePage user={currentUser} favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} setProfileImage={setProfileImage}/> }/>
+                <Route path="*" element={currentUser ? <Navigate replace to="/home" /> : <Navigate replace to="/" />} /> 
             </Routes>
             </main>
 

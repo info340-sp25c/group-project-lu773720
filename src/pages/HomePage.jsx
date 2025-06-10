@@ -5,6 +5,7 @@ import { searchArtist, getTracksFromArtist, getThumbnailUrlFromTrackUrl } from '
 import Card from '../components/Card';
 import { SearchBar } from "../components/SearchBar";
 import { ProfileWindow } from "../components/ProfileWindow"
+import { Link } from "react-router-dom";
 
 export function HomePage({ user, profileImage = "img/profile.png", favorites, addFavorite, removeFavorite, thumbnails, setThumbnails }) {
     const [query, setQuery] = useState('');
