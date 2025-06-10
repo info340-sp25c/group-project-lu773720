@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-
-export function NavButtons({user = null, profileImage="img/profile.png"}) {
+import defaultProfile from 'img/profile.png'
+export function NavButtons({user = null, profileImage=defaultProfile}) {
     const location = useLocation();
     const pathName = location.pathname;
     const pfpLink = user ? "/profile" : "/login"
