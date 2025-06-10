@@ -1,92 +1,98 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 // import { HomeLayout } from "../components/HomeLayout";
 //import { Header } from "../components/Header";
+import { searchArtist, getTracksFromArtist, getThumbnailUrlFromTrackUrl } from '../api.js';
+import Card from '../components/Card';
 import { SearchBar } from "../components/SearchBar";
 import { ProfileWindow } from "../components/ProfileWindow"
 
-import stickseason_noah_kahan_copy from '../img/stickseason-noah-kahan copy.jpeg';
-import kidkrow_conan_gray_copy from '../img/kidkrow-conan-gray copy.jpg';
-import melodrama_lorde_copy from '../img/melodrama-lorde copy.jpeg';
-import pureheroine_lorde_copy from '../img/pureheroine-lorde copy.jpeg';
-import hozier_hozier_copy from '../img/hozier-hozier copy.jpeg';
+export function HomePage({ user, profileImage = "img/profile.png", favorites, addFavorite, removeFavorite, thumbnails, setThumbnails }) {
+    const [query, setQuery] = useState('');
+    const [artists, setArtists] = useState([]);
+    const [selectedArtist, setSelectedArtist] = useState(null);
+    const [songs, setSongs] = useState([]);
 
-export function HomePage({ user, profileImage = "img/profile.png"}) {
+    const handleSearch = async () => {
+        const result = await searchArtist(query);
+        console.log(result);
+        setArtists(result);
+        setSelectedArtist(null);
+        setSongs([]);
+    };
 
-  return (
-  <>
-    <header>
-      <ProfileWindow user={user} profileImage={profileImage}/>
-      <SearchBar title="Discover New Music" barText={"Enter a song title..."}/>
-    </header>
-    
-    <section id="past-recs" class="pastSearchCard">
-        <div id="input-songs" class="songlist">
-            <h2>Songs You Referenced</h2>
-            <ul class="songlist">
-                <li class="song">Hello by Adele</li>
-                <li class="song">Movies by Conan Gray</li>
-                <li class="song">Hello by Adele</li>
-                <li class="song">Movies by Conan Gray</li>
-                <li class="song">Hello by Adele</li>
-                <li class="song">Movies by Conan Gray</li>
-            </ul>
-        </div>
+    const handleSelectArtist = async (artist) => {
+        setSelectedArtist(artist);
+        const result = await getTracksFromArtist(artist.id);
+        console.log(result);
+        setSongs(result);
+    };
 
-        <div id="song-recommendations" class="album-grid">
-            <h2>Suggested New Music</h2>
-            <div class="album">
-                <img src={stickseason_noah_kahan_copy} alt="Stick Season Noah Kahan album cover"/>
-                <div>
-                    <p class="album-title">Call Your Mom</p>
-                    <p class="album-artist">Noah Kahan</p>
-                </div>
+    useEffect(() => {
+        const loadThumbnails = async () => {
+        const newThumbs = {};
+        for (const song of songs) {
+            if (song.href && !thumbnails[song.id]) {
+            const thumbUrl = await getThumbnailUrlFromTrackUrl(song.href);
+            newThumbs[song.id] = thumbUrl;
+            }
+        }
+        setThumbnails(prev => ({ ...prev, ...newThumbs }));
+        };
+
+        if (songs.length > 0) {
+        loadThumbnails();
+        }
+    }, [songs]);
+
+
+    return (
+    <>
+        <header>
+        <ProfileWindow user={user} profileImage={profileImage}/>
+        <SearchBar
+            title="Search Artists"
+            label="Search for artist"
+            barText="Enter artist name"
+            dividerText=""
+            query={query}
+            setQuery={setQuery}
+            onSearch={handleSearch}
+            />
+        </header>
+        {!selectedArtist && artists.length > 0 && (
+          <ul>
+            {artists.map((artist, i) => (
+              <li key={i}>
+                <button onClick={() => handleSelectArtist(artist)}>
+                  {artist.name || artist}
+                </button>
+              </li>
+            ))}
+          </ul>
+        )}
+        {selectedArtist && (
+          <div>
+            <h2>Songs by {selectedArtist.name || selectedArtist}</h2>
+            <div className="card-container">
+              {songs.map((song, i) => (
+                <Card
+                  key={song.id}
+                  id={song.id}
+                  img={thumbnails[song.id] || 'img/profile.png'}
+                  title={song.trackTitle}
+                  artist={song.artists.map(a => a.name).join(', ')}
+                  description={`Duration: ${Math.round(song.durationMs / 1000)}s`}
+                  url={song.href}
+                  favorites={favorites}
+                  addFavorite={addFavorite}
+                  removeFavorite={removeFavorite}
+                />
+              ))}
             </div>
-
-            <div class="album">
-                <img src={kidkrow_conan_gray_copy} alt="Kid Krow Conan Gray album cover"/>
-                <div>
-                    <p class="album-title">Little League</p>
-                    <p class="album-artist">Conan Gray</p>
-                </div>
-            </div>
-
-            <div class="album">
-                <img src={melodrama_lorde_copy} alt="Melodrama Lorde album cover"/>
-                <div>
-                    <p class="album-title">Green Light</p>
-                    <p class="album-artist">Lorde</p>
-                </div>
-            </div>
-
-            <div class="album">
-                <img src={pureheroine_lorde_copy} alt="Pure Heroine Lorde album cover"/>
-                <div>
-                    <p class="album-title">Royals</p>
-                    <p class="album-artist">Lorde</p>
-                </div>
-            </div>
-
-            <div class="album">
-                <img src={hozier_hozier_copy} alt="Hozier Hozier album cover"/>
-                <div>
-                    <p class="album-title">Take Me to Church</p>
-                    <p class="album-artist">Hozier</p>
-                </div>
-            </div>
-
-            <div class="album">
-                <img src={kidkrow_conan_gray_copy} alt="Kid Krow Conan Gray album cover"/>
-                <div>
-                    <p class="album-title">Jigsaw</p>
-                    <p class="album-artist">Conan Gray</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-  </>
-  );
+          </div>
+        )}
+    </>
+    );
 
   
 

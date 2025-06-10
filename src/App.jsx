@@ -100,7 +100,7 @@ function App() {
 
                 <Route path="/test" element={ <Test favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} thumbnails={thumbnails} setThumbnails={setThumbnails} /> }/>
 
-                <Route path="/home" element={ <HomePage user={currentUser} profileImage={profileImage}/> }/>
+                <Route path="/home" element={ <HomePage user={currentUser} profileImage={profileImage} favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} thumbnails={thumbnails} setThumbnails={setThumbnails} /> }/>
                 <Route path='/mood-rec' element={<MoodRecommender favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} thumbnails={thumbnails} setThumbnails={setThumbnails} />}/>
                 {/* <Route path="/mood-rec" element={ }/> */}
                 {/* <Route path="/profile" element={ }/> */}
