@@ -6,7 +6,7 @@ import { NavButtons } from './NavButtons';
 
 import snoopy from '../img/snoopy.png';
 
-export function Navbar({profileImage = "img/profile.png"}) {
+export function Navbar({user = null, profileImage = "img/profile.png"}) {
     const [mobileNavOpen, setMobileNavOpen] = useState(false);    return (
         <>
             <div className="navbar">
@@ -17,7 +17,7 @@ export function Navbar({profileImage = "img/profile.png"}) {
                     </div>
 
                     <div className="nav-list">
-                        <NavButtons profileImage={profileImage}/>
+                        <NavButtons user={user} profileImage={profileImage}/>
                     </div>
                     <button
                     type="button"
@@ -30,7 +30,7 @@ export function Navbar({profileImage = "img/profile.png"}) {
                         </i>
                     </button>
                 </nav>
-                {mobileNavOpen && <div className="mobile-nav-list"><NavButtons profileImage={profileImage}/></div>}
+                {mobileNavOpen && <div className="mobile-nav-list"><NavButtons user={user} profileImage={profileImage}/></div>}
             </div>
         </>
     )

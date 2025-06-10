@@ -3,6 +3,7 @@ import React from "react";
 //import { Header } from "../components/Header";
 import { SearchBar } from "../components/SearchBar";
 import { ProfileWindow } from "../components/ProfileWindow"
+import { Link } from "react-router-dom";
 
 import stickseason_noah_kahan_copy from '../img/stickseason-noah-kahan copy.jpeg';
 import kidkrow_conan_gray_copy from '../img/kidkrow-conan-gray copy.jpg';
@@ -11,7 +12,13 @@ import pureheroine_lorde_copy from '../img/pureheroine-lorde copy.jpeg';
 import hozier_hozier_copy from '../img/hozier-hozier copy.jpeg';
 
 export function HomePage({ user, profileImage = "img/profile.png"}) {
-
+    if (!user) {
+        return (
+            <div className="not-logged-in-message" style={{ textAlign: 'center', marginTop: '2rem' }}>
+                <h2><Link to="/login">Sign in</Link> to see this feature!</h2>
+            </div>
+        )
+    }
   return (
   <>
     <header>

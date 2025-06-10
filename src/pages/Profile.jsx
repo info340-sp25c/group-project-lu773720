@@ -17,7 +17,7 @@ export function ProfilePage({ user, favorites, addFavorite, removeFavorite}) {
     const [newUsername, setNewUsername] = useState("")
     const [newPassword, setNewPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
-    const [passwordUpdateCounter, setPasswordUpdateCounter] = useState(() => localStorage.getItem("passwordUpdateCounter") || 0)
+    // const [passwordUpdateCounter, setPasswordUpdateCounter] = useState(() => localStorage.getItem("passwordUpdateCounter") || 0)
     const [newEmail, setNewEmail] = useState("")
     const [newProfileImage, setNewProfileImage] = useState(null);
     const [photoPreview, setPhotoPreview] = useState("img/profile.png")
@@ -44,10 +44,10 @@ export function ProfilePage({ user, favorites, addFavorite, removeFavorite}) {
         }
     }
   
-   const passwordPlusOne = () => {
-    localStorage.setItem("passwordUpdateCounter", passwordUpdateCounter+1)
-    setPasswordUpdateCounter(passwordUpdateCounter+1)
-   }
+//    const passwordPlusOne = () => {
+//     localStorage.setItem("passwordUpdateCounter", passwordUpdateCounter+1)
+//     setPasswordUpdateCounter(passwordUpdateCounter+1)
+//    }
 
     const handleProfileImage = (e) => {
         e.preventDefault()
@@ -213,9 +213,9 @@ export function ProfilePage({ user, favorites, addFavorite, removeFavorite}) {
                         </li>
 
                         <li>
-                            <p style={{ margin: 0, fontWeight: 'bold' }}>
+                            {/* <p style={{ margin: 0, fontWeight: 'bold' }}>
                                 Times Password Has Been Changed: {passwordUpdateCounter}
-                            </p>
+                            </p> */}
                             <button
                             type="button"
                             onClick={() => setActiveSetting("password")}
@@ -253,9 +253,9 @@ export function ProfilePage({ user, favorites, addFavorite, removeFavorite}) {
                         </li>
 
                         <li>
-                            <p style={{ margin: 0, fontWeight: 'bold' }}>
+                            {/* <p style={{ margin: 0, fontWeight: 'bold' }}>
                                 Log out of your profile
-                            </p>
+                            </p> */}
                             <Link to="/login">
                             <button
                             type="button"
