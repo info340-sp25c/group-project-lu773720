@@ -1,14 +1,7 @@
 import React from "react";
 
-export function SearchBar({
-  title,
-  label,
-  barText,
-  dividerText,
-  query,
-  setQuery,
-  onSearch,
-}) {
+export function SearchBar({ title, label, barText, dividerText, query,setQuery,onSearch,}) {
+    
   const handleSubmit = (e) => {
     e.preventDefault();
     onSearch();
