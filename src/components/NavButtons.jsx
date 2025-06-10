@@ -8,7 +8,6 @@ export function NavButtons({profileImage="img/profile.png"}) {
     let generatePageText = function(text, associatedPath) {
         return pathName === associatedPath ? (<strong>{text}</strong>) : (text);
     }
-    console.log("NavButtons received profileImage:", profileImage);
     return (
         <>
             <Link to="/home">{generatePageText("Home", "/home")}</Link>

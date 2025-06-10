@@ -9,6 +9,9 @@ export default function MoodRecommender({ favorites, addFavorite, removeFavorite
   const [selectedMoods, setSelectedMoods] = useState([]);
   const [moodRecs, setMoodRecs] = useState([]);
 
+
+
+
   const moodToggled = (name) => {
     setSelectedMoods((prev) =>
       prev.includes(name)
@@ -19,15 +22,20 @@ export default function MoodRecommender({ favorites, addFavorite, removeFavorite
 
   const doMoodRec = async () => {
     let moodValues = [];
-    let favoritedSongIds = [];
+    // let favoritedSongIds = [];
     for (const mood of selectedMoods) {
       moodValues.push(moodList[mood]);
     };
-    for (const favorite of favorites) {
-      favoritedSongIds.push(favorite.id);
-    }
-    setMoodRecs(await getRecommendation(favoritedSongIds, moodValues));
-    console.log(moodRecs);
+    // for (const favorite of favorites) {
+    //   favoritedSongIds.push(favorite.id);
+    // }
+    let favoritedSongIds = favorites.length > 0
+      ? favorites.map(f => f.id)
+      : ['04757a3b-e2d5-4838-81ee-60e19990f5d6']
+    // setMoodRecs(await getRecommendation(favoritedSongIds, moodValues));
+    const recs = (await getRecommendation(favoritedSongIds, moodValues)) || [];
+    setMoodRecs(recs);
+    console.log("moodRecs:", recs);
   };
 
   useEffect(() => {
