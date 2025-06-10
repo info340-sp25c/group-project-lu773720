@@ -13,6 +13,7 @@ import { ProfilePage } from './pages/Profile';
 import MoodRecommender from './pages/MoodRecommender';
 import { LoginPage } from './pages/LoginPage';
 import { SignUpPage } from './pages/SignUpPage';
+import { Test } from './pages/Test';
 
 
 // import { LoginPage } from './pages/LoginPage';
@@ -21,6 +22,7 @@ function App() {
     const [currentUser, setCurrentUser] = useState(null);
     const [profileImage, setProfileImage] = useState("img/profile.png")
     const [favorites, setFavorites] = useState([]);
+    const [thumbnails, setThumbnails] = useState({});
     
     
     useEffect(() => {
@@ -96,8 +98,10 @@ function App() {
                 {/* this should eventually be the home page if the user isn't logged in */}
                 <Route path="/" element={ <WelcomePage /> }/>
 
+                <Route path="/test" element={ <Test favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} thumbnails={thumbnails} setThumbnails={setThumbnails} /> }/>
+
                 <Route path="/home" element={ <HomePage user={currentUser} profileImage={profileImage}/> }/>
-                <Route path='/mood-rec' element={<MoodRecommender favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} />}/>
+                <Route path='/mood-rec' element={<MoodRecommender favorites={favorites} addFavorite={addFavorite} removeFavorite={removeFavorite} thumbnails={thumbnails} setThumbnails={setThumbnails} />}/>
                 {/* <Route path="/mood-rec" element={ }/> */}
                 {/* <Route path="/profile" element={ }/> */}
                 <Route path="/login" element={<LoginPage />} />
